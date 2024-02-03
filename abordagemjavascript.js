@@ -1,7 +1,33 @@
+var blurOn = 0;
+
+$(document).ready(function(){
+    $('body').css('display','none');
+
+    // Função para mostrar o body quando os inputs tiverem sido preenchidos
+    function mostrarBodyQuandoPreenchido() {
+        const nomeInGame = prompt("Por favor, insira seu Nome In game:");
+        const id = prompt("Agora, insira seu ID:");
+        
+        // Verifica se os campos foram preenchidos
+        if (nomeInGame && id) {
+            // Atualiza o valor do input
+            $('#conscrito').val(nomeInGame + " | " + id);
+            // Mostra o body
+            blurOn = 0;
+            $('body').css('display','block');
+        } else {
+            // Se algum campo estiver vazio, chama novamente a função
+            mostrarBodyQuandoPreenchido();
+        }
+    }
+
+    // Chama a função para começar o processo
+    mostrarBodyQuandoPreenchido();
+});
 const codigoJavascript = `
 <div class="question" id="questao1">
 <span>Nome &amp; Id do Oficial Aluno: Exemplo("Fulano | 123")</span><br>
-<input type="text" id="conscrito" placeholder="Digite sua Resposta">
+<input type="text" id="conscrito" placeholder="Digite sua Resposta" readonly>
 </div>
 <!-- Perguntas -->
 <div class="question">

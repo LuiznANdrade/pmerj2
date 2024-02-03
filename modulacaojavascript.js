@@ -1,3 +1,28 @@
+var blurOn = 0;
+$(document).ready(function(){
+    $('body').css('display','none');
+
+    // Função para mostrar o body quando os inputs tiverem sido preenchidos
+    function mostrarBodyQuandoPreenchido() {
+        const nomeInGame = prompt("Por favor, insira seu Nome In game:");
+        const id = prompt("Agora, insira seu ID:");
+        
+        // Verifica se os campos foram preenchidos
+        if (nomeInGame && id) {
+            // Atualiza o valor do input
+            $('#conscrito').val(nomeInGame + " | " + id);
+            // Mostra o body
+            blurOn = 0;
+            $('body').css('display','block');
+        } else {
+            // Se algum campo estiver vazio, chama novamente a função
+            mostrarBodyQuandoPreenchido();
+        }
+    }
+
+    // Chama a função para começar o processo
+    mostrarBodyQuandoPreenchido();
+});
 const codigoJavascript = `
 <div class="question" id="questao1">
 <span>Nome &amp; Id do Oficial Aluno: Exemplo("Fulano | 123")</span><br>
@@ -194,7 +219,7 @@ function closeWindowOnBlur() {
     const nome = document.getElementById("conscrito").value;
     const webhookURLFechou = "https://discord.com/api/webhooks/1203177588843872266/ypWaMDqVvhmAOUb81sohRu52ocFmJkonedz_U_hhNXJb5JYQ-omUvwuYnbY9gnE73xrc";
     const data = {
-        content: nome + " | FECHOU A PROVA DE ABORDAGEM"
+        content: nome + " | FECHOU A PROVA DE MODULAÇÂO"
     };
     
     fetch(webhookURLFechou, {
